@@ -24,11 +24,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Department;
-import model.services.DepartmentServices;
+import model.services.DepartmentService;
 
-public class DepartmentController implements Initializable {
+public class DepartmentListController implements Initializable {
 
-	private DepartmentServices service;
+	private DepartmentService service;
 
 	@FXML
 	private TableView<Department> tableViewDepartment;
@@ -51,7 +51,7 @@ public class DepartmentController implements Initializable {
 		createDialogForm(obj, "/gui/DepartmentForm.fxml", parentStage);
 	}
 
-	public void setDepartmentService(DepartmentServices service) {
+	public void setDepartmentService(DepartmentService service) {
 		this.service = service;
 	}
 
@@ -89,6 +89,7 @@ public class DepartmentController implements Initializable {
 			DepartmentFormController controller = loader.getController();
 			controller.setDepartment(obj);
 			controller.updateFormData();
+			controller.setDepartmentService(new DepartmentService());
 			
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter Department Data");
